@@ -23,6 +23,8 @@ public class Department {
     @Column(name = "chief", nullable = false)
     private String chief;
 
+    public Department() {
+    }
     public Department(String name, String phone, String chief) {
         this.name = name;
         this.phone = phone;
@@ -51,5 +53,13 @@ public class Department {
 
     public void setChief(String chief) {
         this.chief = chief;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
