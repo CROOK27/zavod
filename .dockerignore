@@ -1,0 +1,7 @@
+Dockerfile
+.dockerignore
+**/target/ # Исключаем директорию сборки (для Maven)
+**/build/  # Исключаем директорию сборки (для Gradle)
+**/.git
+**/*.log
+**/README.md
