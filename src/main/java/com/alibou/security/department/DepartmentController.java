@@ -1,17 +1,16 @@
 package com.alibou.security.department;
 
-import com.alibou.security.employee.EmployeeService;
-import com.alibou.security.position.Position;
-import com.alibou.security.position.PositionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/department")
+@PreAuthorize("hasRole('ADMIN')")
 public class DepartmentController {
     private final DepartmentService departmentService;
 
@@ -31,4 +30,41 @@ public class DepartmentController {
     }
     @GetMapping
     public List<Department> getAllDepartment() {return departmentService.getAllDepartment();}
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Department> getDepartmentById(@PathVariable Long id){
+        Optional<Department> department = departmentService.getDepartmentById(id);
+        return department.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Department> putDepartmentById(@PathVariable Long id, @RequestBody Department department) {
+        Optional<Department> departmentNew = departmentService.getDepartmentById(id);
+
+        if (departmentNew.isPresent()) {
+            Department existingDepartment = departmentNew.get();
+
+            existingDepartment.setName(department.getName());
+            existingDepartment.setPhone(department.getPhone());
+            existingDepartment.setChief(department.getChief());
+
+            Department updatedDepartment = departmentService.saveDepartment(existingDepartment);
+            return ResponseEntity.ok(updatedDepartment);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteDepartmentById(@PathVariable Long id) {
+        Optional<Department> department = departmentService.getDepartmentById(id);
+
+        if (department.isPresent()) {
+            departmentService.deleteDepartmentById(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

@@ -1,9 +1,12 @@
 package com.alibou.security.employee;
 
 
+import com.alibou.security.department.Department;
+import com.alibou.security.position.Position;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -38,8 +41,12 @@ public class EmployeeService {
     public List<Employee> getEmployeesByComplexCondition() {
         return employeeRepository.findEmployeesByComplexCondition();
     }
-
+    public Employee saveEmployee (Employee employee){
+        return employeeRepository.save(employee);
+    }
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
+
+    public Optional<Employee> getEmployeeById(Long id){return employeeRepository.findById(id);};
 }

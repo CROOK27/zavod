@@ -23,4 +23,5 @@ public class DepartmentService {
     public Optional<Department> getDepartmentById(Long id) {
         return departmentRepository.findById(id);
     }
+    public void deleteDepartmentById(Long id) { departmentRepository.deleteById(id);}
 }
