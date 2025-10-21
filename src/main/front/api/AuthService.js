@@ -97,4 +97,5 @@ export default class AuthService {
             throw error;
         }
     }
+
 }

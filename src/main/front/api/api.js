@@ -21,7 +21,7 @@ export const login = async (credentials) => {
   try {
     const response = await $api.post(`${API_URL}/auth/authenticate`, credentials);
 
-    // Исправлено: используем правильные названия полей
+    // Убедитесь что используете правильные названия полей
     if (response.data.access_token && response.data.refresh_token) {
         return { success: true, data: response.data };
     } else {
