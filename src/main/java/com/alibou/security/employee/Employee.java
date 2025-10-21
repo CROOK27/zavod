@@ -1,6 +1,7 @@
 package com.alibou.security.employee;
 import com.alibou.security.position.Position;
-import com.alibou.security.unit.Unit;
+import com.alibou.security.orders.Orders;
+import com.alibou.security.user.User;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -16,54 +17,58 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "_employee")
+@Table(name = "employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_employee")
     private Long id;
 
-    @Column(name = "fullName", nullable = false)
-    private String fullName;
-
-    @Column(name = "birthDate", nullable = false)
+    @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
 
     @Column(name = "gender", length = 1)
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
-    @Column(name = "phone")
-    private String phone;
-
-    @Column(name = "hireDate", nullable = false)
+    @Column(name = "hire_date", nullable = false)
     private LocalDate hireDate;
 
     @Column(name = "rate", precision = 3, scale = 2)
     private BigDecimal rate = BigDecimal.ONE;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_unit", nullable = false)
-    private Unit unit;
+    @JoinColumn(name = "id_orders", nullable = false)
+    private Orders orders;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_position", nullable = false)
+    @JoinColumn(name = "id_position")
     private Position position;
 
-    public Employee(String fullName, LocalDate birthDate, String gender,
-                    String phone, LocalDate hireDate, Unit unit, Position position) {
-        this.fullName = fullName;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_user")
+    private User user;
+
+    public Employee(LocalDate birthDate, Gender gender,
+                    LocalDate hireDate, BigDecimal rate, Orders orders, Position position, User user) {
         this.birthDate = birthDate;
         this.gender = gender;
-        this.phone = phone;
         this.hireDate = hireDate;
-        this.unit = unit;
+        this.rate = rate;
+        this.orders = orders;
         this.position = position;
+        this.user = user;
     }
 
     // Геттеры и сеттеры...
 
     public Long getId() {
         return id;
+    }
+    public String getFullName() {
+        return user != null ?
+                user.getUsername():
+                "Неизвестно";
     }
 
     public void setId(Long id) {
@@ -78,14 +83,6 @@ public class Employee {
         this.rate = rate;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public LocalDate getBirthDate() {
         return birthDate;
     }
@@ -94,20 +91,12 @@ public class Employee {
         this.birthDate = birthDate;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public LocalDate getHireDate() {
@@ -118,12 +107,20 @@ public class Employee {
         this.hireDate = hireDate;
     }
 
-    public Unit getUnit() {
-        return unit;
+    public Orders getOrders() {
+        return orders;
     }
 
-    public void setUnit(Unit unit) {
-        this.unit = unit;
+    public void setUnit(Orders unit) {
+        this.orders = orders;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Position getPosition() {
@@ -132,5 +129,9 @@ public class Employee {
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+
+    public void setOrders(Orders orders) {
+        this.orders = orders;
     }
 }

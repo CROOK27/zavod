@@ -67,9 +67,10 @@ public class EmployeeController {
             Employee existingEmployee = employee.get();
 
             existingEmployee.setBirthDate(employee.get().getBirthDate());
-            existingEmployee.setPhone(employee.get().getPhone());
+            existingEmployee.getUser().setPhone(employee.get().getUser().getPhone());
             existingEmployee.setGender(employee.get().getGender());
-            existingEmployee.setFullName(employee.get().getFullName());
+            existingEmployee.getUser().setFirstname((employee.get().getUser().getFirstname()));
+            existingEmployee.getUser().setLastname((employee.get().getUser().getLastname()));
 
             Employee updatedEmployee = employeeService.saveEmployee(existingEmployee);
             return ResponseEntity.ok(updatedEmployee);

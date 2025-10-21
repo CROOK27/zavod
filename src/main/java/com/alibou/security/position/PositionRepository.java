@@ -4,8 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PositionRepository extends JpaRepository<Position, Long> {
@@ -21,4 +21,9 @@ public interface PositionRepository extends JpaRepository<Position, Long> {
     // l. MIN и MAX
     @Query("SELECT MIN(p.salary), MAX(p.salary) FROM Position p")
     List<Object[]> findMinMaxSalary();
+
+    // Простые методы
+    Optional<Position> findByName(String name);
+    List<Position> findByGrade(Integer grade);
+    List<Position> findBySalaryBetween(Double minSalary, Double maxSalary);
 }

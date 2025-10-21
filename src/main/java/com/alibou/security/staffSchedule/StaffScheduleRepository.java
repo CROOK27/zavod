@@ -12,28 +12,20 @@ import java.util.List;
 public interface StaffScheduleRepository extends JpaRepository<StaffSchedule, Long> {
 
     // c. GROUP BY с HAVING
-    @Query("SELECT s.unit.department.name AS departmentName, COUNT(s) AS unitCount " +
-            "FROM StaffSchedule s " +
-            "GROUP BY s.unit.department.name " +
-            "HAVING COUNT(s) > 1")
-    List<Object[]> findDepartmentsWithMultipleUnits();
 
     // d. SUM с группировкой
-    @Query("SELECT s.unit.name, SUM(s.staffUnits) " +
-            "FROM StaffSchedule s " +
-            "GROUP BY s.unit.name")
-    List<Object[]> findTotalStaffUnitsByUnit();
+    @Query("SELECT s.branch.nameBranch, SUM(s.staffUnits) FROM StaffSchedule s GROUP BY s.branch.nameBranch")
+    List<Object[]> findTotalStaffUnitsByBranch();
 
     // g. SUM с BETWEEN
-    @Query("SELECT s.unit.department.name, SUM(s.staffUnits) " +
+    @Query("SELECT s.position.name, SUM(s.staffUnits) " +
             "FROM StaffSchedule s " +
             "WHERE s.introductionDate BETWEEN :startDate AND :endDate " +
-            "GROUP BY s.unit.department.name")
-    List<Object[]> findStaffUnitsByDepartmentAndDateRange(
+            "GROUP BY s.position.name")
+    List<Object[]> findStaffUnitsByPositionAndDateRange(
             @Param("startDate") LocalDate startDate,
             @Param("endDate") LocalDate endDate);
 
-    List<StaffSchedule> findByUnitDepartmentName(String departmentName);
     List<StaffSchedule> findByIntroductionDateBetween(LocalDate startDate, LocalDate endDate);
     List<StaffSchedule> findByStaffUnitsGreaterThan(Integer minUnits);
 }

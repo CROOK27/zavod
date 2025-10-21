@@ -1,34 +1,42 @@
 package com.alibou.security.department;
 
-import com.alibou.security.unit.Unit;
+import com.alibou.security.employee.Employee;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
-@Table(name = "_department")
+@Table(name = "department")
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_department")
+    @Column(name = "department_id")
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name_department", nullable = false)
     private String name;
 
-    @Column(name = "phone")
+    @Column(name = "phone", unique = true)
     private String phone;
 
-    @Column(name = "chief", nullable = false)
-    private String chief;
+    @OneToOne
+    @JoinColumn(name = "chief_id",nullable = false)
+    private Employee chief;
 
     public Department() {
     }
-    public Department(String name, String phone, String chief) {
+
+    public Department(String name, String phone, Employee chief) {
         this.name = name;
         this.phone = phone;
         this.chief = chief;
+    }
+
+    // геттеры и сеттеры
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -47,19 +55,11 @@ public class Department {
         this.phone = phone;
     }
 
-    public String getChief() {
+    public Employee getChief() {
         return chief;
     }
 
-    public void setChief(String chief) {
+    public void setChief(Employee chief) {
         this.chief = chief;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

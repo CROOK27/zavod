@@ -17,7 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "_user")
+@Table(name = "users")
 public class User implements UserDetails {
 
   @Id
@@ -25,7 +25,9 @@ public class User implements UserDetails {
   private Integer id;
   private String firstname;
   private String lastname;
+  @Column(name = "email", unique = true)
   private String email;
+  private String phone;
   private String password;
 
   @Enumerated(EnumType.STRING)
@@ -43,12 +45,11 @@ public class User implements UserDetails {
   public String getPassword() {
     return password;
   }
-
-  @Override
-  public String getUsername() {
+  public String getEmail() {
     return email;
   }
-
+  @Override
+  public String getUsername(){return firstname+" "+lastname;}
   @Override
   public boolean isAccountNonExpired() {
     return true;
@@ -67,5 +68,53 @@ public class User implements UserDetails {
   @Override
   public boolean isEnabled() {
     return true;
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public String getFirstname() {
+    return firstname;
+  }
+
+  public void setFirstname(String firstname) {
+    this.firstname = firstname;
+  }
+
+  public String getLastname() {
+    return lastname;
+  }
+
+  public void setLastname(String lastname) {
+    this.lastname = lastname;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getPhone() {
+    return phone;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public Role getRole() {
+    return role;
+  }
+
+  public void setRole(Role role) {
+    this.role = role;
   }
 }

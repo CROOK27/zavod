@@ -12,7 +12,7 @@ import java.util.List;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     // a. Выбор всех данных по двум полям таблицы
-    @Query("SELECT e.fullName, e.phone FROM Employee e")
+    @Query("SELECT e.user.firstname, e.user.lastname, e.user.phone FROM Employee e WHERE e.user IS NOT NULL")
     List<Object[]> findAllNamesAndPhones();
 
     // b. Все неповторяющиеся должности
@@ -23,8 +23,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     List<Employee> findByOrderByHireDateDesc();
 
     // j. Поиск по шаблону LIKE
-    @Query("SELECT e FROM Employee e WHERE e.fullName LIKE %:pattern%")
-    List<Employee> findByFullNameLike(@Param("pattern") String pattern);
+    @Query("SELECT e FROM Employee e WHERE e.user.firstname LIKE %:pattern% OR e.user.lastname LIKE %:pattern%")
+    List<Employee> findByFullNameLike(String pattern);
 
     // m. Сложное условие с AND, OR
     @Query("SELECT e FROM Employee e WHERE " +

@@ -16,10 +16,6 @@ public class StaffScheduleController {
         this.staffScheduleService = staffScheduleService;
     }
 
-    @GetMapping("/departments-multiple-units")
-    public List<Object[]> getDepartmentsWithMultipleUnits() {
-        return staffScheduleService.getDepartmentsWithMultipleUnits();
-    }
 
     @GetMapping("/total-staff-units")
     public List<Object[]> getTotalStaffUnitsByUnit() {
@@ -33,10 +29,10 @@ public class StaffScheduleController {
         return staffScheduleService.getStaffUnitsByDepartmentAndDateRange(startDate, endDate);
     }
 
-    @GetMapping("/by-department/{departmentName}")
-    public List<StaffSchedule> getStaffSchedulesByDepartment(@PathVariable String departmentName) {
-        return staffScheduleService.getStaffSchedulesByDepartment(departmentName);
-    }
+    //@GetMapping("/by-department/{departmentName}")
+    //public List<StaffSchedule> getStaffSchedulesByDepartment(@PathVariable String departmentName) {
+    //    return staffScheduleService.getStaffSchedulesByDepartment(departmentName);
+    //}
 
     @GetMapping
     public List<StaffSchedule> getAllStaffSchedules() {
