@@ -38,6 +38,8 @@ public class StaffSchedule {
     @Column(name = "introduction_date", nullable = false)
     private LocalDate introductionDate = LocalDate.now();
 
+    @Column(name = "end_date")
+    private LocalDate endDate;
     // Конструкторы, геттеры, сеттеры
     public StaffSchedule() {
     }

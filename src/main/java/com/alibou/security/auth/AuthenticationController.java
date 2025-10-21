@@ -2,14 +2,19 @@ package com.alibou.security.auth;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -19,25 +24,52 @@ public class AuthenticationController {
   private final AuthenticationService service;
 
   @PostMapping("/register")
-  public ResponseEntity<AuthenticationResponse> register(
-      @RequestBody RegisterRequest request
+  public ResponseEntity<?> register(
+          @Valid @RequestBody RegisterRequest request,
+          BindingResult bindingResult
   ) {
-    return ResponseEntity.ok(service.register(request));
+    // Проверяем ошибки валидации
+    if (bindingResult.hasErrors()) {
+      Map<String, String> errors = new HashMap<>();
+      bindingResult.getFieldErrors().forEach(error ->
+              errors.put(error.getField(), error.getDefaultMessage())
+      );
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
+    }
+
+    try {
+      AuthenticationResponse response = service.register(request);
+      return ResponseEntity.ok(response);
+    } catch (RuntimeException e) {
+      Map<String, String> errorResponse = new HashMap<>();
+      errorResponse.put("error", e.getMessage());
+      return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    } catch (Exception e) {
+      Map<String, String> errorResponse = new HashMap<>();
+      errorResponse.put("error", "Registration failed");
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
   }
+
   @PostMapping("/authenticate")
-  public ResponseEntity<AuthenticationResponse> authenticate(
-      @RequestBody AuthenticationRequest request
+  public ResponseEntity<?> authenticate(
+          @RequestBody AuthenticationRequest request
   ) {
-    return ResponseEntity.ok(service.authenticate(request));
+    try {
+      AuthenticationResponse response = service.authenticate(request);
+      return ResponseEntity.ok(response);
+    } catch (Exception e) {
+      Map<String, String> errorResponse = new HashMap<>();
+      errorResponse.put("error", "Invalid email or password");
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+    }
   }
 
   @PostMapping("/refresh-token")
   public void refreshToken(
-      HttpServletRequest request,
-      HttpServletResponse response
+          HttpServletRequest request,
+          HttpServletResponse response
   ) throws IOException {
     service.refreshToken(request, response);
   }
-
-
 }

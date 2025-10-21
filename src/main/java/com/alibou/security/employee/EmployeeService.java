@@ -49,4 +49,7 @@ public class EmployeeService {
     }
 
     public Optional<Employee> getEmployeeById(Long id){return employeeRepository.findById(id);};
+    public void deleteEmployeeById(Long id){
+        employeeRepository.deleteById(id);
+    }
 }

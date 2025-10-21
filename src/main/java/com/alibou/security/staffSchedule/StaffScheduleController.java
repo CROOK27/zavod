@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/staff-schedule")
+@RequestMapping("/api/staff_schedule")
 public class StaffScheduleController {
 
     private final StaffScheduleService staffScheduleService;
@@ -17,16 +17,16 @@ public class StaffScheduleController {
     }
 
 
-    @GetMapping("/total-staff-units")
+    @GetMapping("/total-staff_units")
     public List<Object[]> getTotalStaffUnitsByUnit() {
         return staffScheduleService.getTotalStaffUnitsByUnit();
     }
 
-    @GetMapping("/by-date-range")
-    public List<Object[]> getStaffUnitsByDateRange(
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
-        return staffScheduleService.getStaffUnitsByDepartmentAndDateRange(startDate, endDate);
+    @GetMapping("/by_date_range")
+    public List<StaffSchedule> getStaffByPositionAndDateRange(
+            @RequestParam LocalDate startDate,
+            @RequestParam LocalDate endDate) {
+        return staffScheduleService.getStaffByDateRange(startDate, endDate);
     }
 
     //@GetMapping("/by-department/{departmentName}")

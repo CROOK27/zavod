@@ -12,20 +12,18 @@ import java.util.List;
 public interface StaffScheduleRepository extends JpaRepository<StaffSchedule, Long> {
 
     // c. GROUP BY с HAVING
-
     // d. SUM с группировкой
     @Query("SELECT s.branch.nameBranch, SUM(s.staffUnits) FROM StaffSchedule s GROUP BY s.branch.nameBranch")
     List<Object[]> findTotalStaffUnitsByBranch();
 
-    // g. SUM с BETWEEN
-    @Query("SELECT s.position.name, SUM(s.staffUnits) " +
-            "FROM StaffSchedule s " +
-            "WHERE s.introductionDate BETWEEN :startDate AND :endDate " +
-            "GROUP BY s.position.name")
-    List<Object[]> findStaffUnitsByPositionAndDateRange(
-            @Param("startDate") LocalDate startDate,
-            @Param("endDate") LocalDate endDate);
+    @Query("SELECT s FROM StaffSchedule s JOIN s.positions p WHERE p.id = :positionId")
+    List<StaffSchedule> findByPositionId(@Param("positionId") Long positionId);
 
     List<StaffSchedule> findByIntroductionDateBetween(LocalDate startDate, LocalDate endDate);
     List<StaffSchedule> findByStaffUnitsGreaterThan(Integer minUnits);
+    @Query("SELECT s FROM StaffSchedule s WHERE s.introductionDate BETWEEN :startDate AND :endDate")
+    List<StaffSchedule> findByDateRange(
+            @Param("startDate") LocalDate startDate,
+            @Param("endDate") LocalDate endDate
+    );
 }

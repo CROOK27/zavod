@@ -22,8 +22,8 @@ public class StaffScheduleService {
     }
 
     // g. Штатные единицы по отделам за период
-    public List<Object[]> getStaffUnitsByDepartmentAndDateRange(LocalDate startDate, LocalDate endDate) {
-        return staffScheduleRepository.findStaffUnitsByPositionAndDateRange(startDate, endDate);
+    public List<StaffSchedule> getStaffByDateRange(LocalDate startDate, LocalDate endDate) {
+        return staffScheduleRepository.findByDateRange(startDate, endDate);
     }
 
     public List<StaffSchedule> getAllStaffSchedules() {

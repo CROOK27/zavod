@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
@@ -37,4 +38,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     List<Employee> findByGender(String gender);
     List<Employee> findByBirthDateAfter(LocalDate date);
     List<Employee> findByBirthDateBefore(LocalDate date);
+    Optional<Employee> deleteEmployeeById(Long id);
 }

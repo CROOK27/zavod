@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/employees")
+@RequestMapping("/employees")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -80,15 +80,15 @@ public class EmployeeController {
 
     }
 
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<?> deleteDepartmentById(@PathVariable Long id) {
-//        Optional<Department> department = employeeService.getEmployeeById(id);
-//
-//        if (department.isPresent()) {
-//            employeeService.delete(id);
-//            return ResponseEntity.noContent().build();
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteDepartmentById(@PathVariable Long id) {
+        Optional<Employee> department = employeeService.getEmployeeById(id);
+
+        if (department.isPresent()) {
+            employeeService.deleteEmployeeById(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

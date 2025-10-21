@@ -30,22 +30,41 @@ public class AuthenticationService {
   private final AuthenticationManager authenticationManager;
 
   public AuthenticationResponse register(RegisterRequest request) {
+    // Проверяем обязательные поля
+    if (request.getFirstname() == null || request.getFirstname().trim().isEmpty()) {
+      throw new RuntimeException("First name is required");
+    }
+
+    if (request.getLastname() == null || request.getLastname().trim().isEmpty()) {
+      throw new RuntimeException("Last name is required");
+    }
+
+    if (request.getEmail() == null || request.getEmail().trim().isEmpty()) {
+      throw new RuntimeException("Email is required");
+    }
+
+    if (request.getPassword() == null || request.getPassword().length() < 6) {
+      throw new RuntimeException("Password must be at least 6 characters long");
+    }
+
     // Проверяем, существует ли пользователь с таким email
-    if (repository.findByEmail(request.getEmail()).isPresent()) {
+    if (repository.findByEmail(request.getEmail().toLowerCase().trim()).isPresent()) {
       throw new RuntimeException("User with this email already exists");
     }
 
     var user = User.builder()
-            .firstname(request.getFirstname())
-            .lastname(request.getLastname())
-            .email(request.getEmail())
+            .firstname(request.getFirstname().trim())
+            .lastname(request.getLastname().trim())
+            .email(request.getEmail().toLowerCase().trim())
             .password(passwordEncoder.encode(request.getPassword()))
-            .role(Role.USER)
+            .role(request.getRole() != null ? request.getRole() : Role.USER)
             .build();
+
     var savedUser = repository.save(user);
     var jwtToken = jwtService.generateToken(user);
     var refreshToken = jwtService.generateRefreshToken(user);
     saveUserToken(savedUser, jwtToken);
+
     return AuthenticationResponse.builder()
             .accessToken(jwtToken)
             .refreshToken(refreshToken)
@@ -53,22 +72,26 @@ public class AuthenticationService {
   }
 
   public AuthenticationResponse authenticate(AuthenticationRequest request) {
-    authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(
-                    request.getEmail(),
-                    request.getPassword()
-            )
-    );
-    var user = repository.findByEmail(request.getEmail())
-            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-    var jwtToken = jwtService.generateToken(user);
-    var refreshToken = jwtService.generateRefreshToken(user);
-    revokeAllUserTokens(user);
-    saveUserToken(user, jwtToken);
-    return AuthenticationResponse.builder()
-            .accessToken(jwtToken)
-            .refreshToken(refreshToken)
-            .build();
+    try {
+      authenticationManager.authenticate(
+              new UsernamePasswordAuthenticationToken(
+                      request.getEmail(),
+                      request.getPassword()
+              )
+      );
+      var user = repository.findByEmail(request.getEmail())
+              .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+      var jwtToken = jwtService.generateToken(user);
+      var refreshToken = jwtService.generateRefreshToken(user);
+      revokeAllUserTokens(user);
+      saveUserToken(user, jwtToken);
+      return AuthenticationResponse.builder()
+              .accessToken(jwtToken)
+              .refreshToken(refreshToken)
+              .build();
+    } catch (Exception e) {
+      throw new RuntimeException("Invalid email or password");
+    }
   }
 
   private void saveUserToken(User user, String jwtToken) {
