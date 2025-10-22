@@ -22,11 +22,12 @@ public class User implements UserDetails {
 
   @Id
   @GeneratedValue
-  private Integer id;
+  private Long id;
   private String firstname;
   private String lastname;
   @Column(name = "email", unique = true)
   private String email;
+  @Column(name = "phone", length = 50)
   private String phone;
   private String password;
 
@@ -49,7 +50,8 @@ public class User implements UserDetails {
     return email;
   }
   @Override
-  public String getUsername(){return firstname+" "+lastname;}
+  public String getUsername(){return email;}
+  public String getFullName(){return lastname+" "+firstname;}
   @Override
   public boolean isAccountNonExpired() {
     return true;
@@ -70,11 +72,13 @@ public class User implements UserDetails {
     return true;
   }
 
-  public Integer getId() {
+
+
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

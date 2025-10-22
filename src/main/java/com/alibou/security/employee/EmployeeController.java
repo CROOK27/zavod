@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/api/v1/employees")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -49,14 +49,9 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createEmployee(@RequestBody Employee employee){
-        try {
-            Employee createdEmployee = employeeService.saveEmployee(employee);
-            return ResponseEntity.created(URI.create("/api/employee/" + createdEmployee.getId()))
-                    .body(createdEmployee);
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<Employee> createEmployee(@RequestBody EmployeeRequest request) {
+        Employee savedEmployee = employeeService.createEmployee(request);
+        return ResponseEntity.ok(savedEmployee);
     }
 
     @PutMapping("/{id}")

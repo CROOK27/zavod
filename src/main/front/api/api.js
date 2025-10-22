@@ -74,6 +74,18 @@ export const getUserById = async (id) => {
     };
   }
 }
+export const getUserByEmail = async (email) => {
+  try {
+    const response = await $api.get(`${API_URL}/users/email/${email}`);
+    return { success: true, data: response.data };
+  } catch (error) {
+    console.error('Error in getUserByEmail:', error);
+    return {
+      success: false,
+      error: error.response?.data?.message || 'Ошибка получения пользователя'
+    };
+  }
+}
 
 export const getAllStaffSchedules = async () => {
   try {

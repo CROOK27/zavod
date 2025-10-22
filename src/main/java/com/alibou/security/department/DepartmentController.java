@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/department")
+@RequestMapping("/api/v1/department")
 @PreAuthorize("hasRole('ADMIN')")
 public class DepartmentController {
     private final DepartmentService departmentService;

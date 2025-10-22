@@ -28,8 +28,16 @@ public class RegisterRequest {
   @NotBlank(message = "Password is required")
   @Size(min = 6, message = "Password must be at least 6 characters")
   private String password;
-
+  private String phone;
   private Role role;
+
+  public String getPhone() {
+    return phone;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
 
   // Геттеры и сеттеры
   public String getFirstname() {

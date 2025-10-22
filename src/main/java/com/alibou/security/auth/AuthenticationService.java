@@ -57,6 +57,7 @@ public class AuthenticationService {
             .lastname(request.getLastname().trim())
             .email(request.getEmail().toLowerCase().trim())
             .password(passwordEncoder.encode(request.getPassword()))
+            .phone(request.getPhone().trim())
             .role(request.getRole() != null ? request.getRole() : Role.USER)
             .build();
 
@@ -106,7 +107,7 @@ public class AuthenticationService {
   }
 
   private void revokeAllUserTokens(User user) {
-    var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
+    var validUserTokens = tokenRepository.findAllValidTokenByUser(Math.toIntExact(user.getId()));
     if (validUserTokens.isEmpty())
       return;
     validUserTokens.forEach(token -> {

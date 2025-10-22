@@ -1,10 +1,12 @@
 package com.alibou.security.user;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -15,7 +17,7 @@ public class UserController {
     private final UserService service;
     private final  UserRepository repository;
     @GetMapping("/{id}")
-    public Optional<User> userInfo(int id){
+    public Optional<User> userInfo(Long id){
         return repository.findById(id);
     }
 
@@ -36,6 +38,33 @@ public class UserController {
             }
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
+        }
+    }
+    @GetMapping("/email/{email}")
+    public ResponseEntity<?> getUserByEmail(@PathVariable String email) {
+        try {
+            Optional<User> userOptional = repository.findByEmail(email);
+
+            if (userOptional.isPresent()) {
+                User user = userOptional.get();
+
+                // Создаем DTO или возвращаем только необходимые поля
+                UserResponse userResponse = new UserResponse();
+                userResponse.setId(Math.toIntExact(user.getId()));
+                userResponse.setEmail(user.getEmail());
+                userResponse.setFirstname(user.getFirstname());
+                userResponse.setLastname(user.getLastname());
+                userResponse.setPhone(user.getPhone());
+                userResponse.setRole(user.getRole());
+                return ResponseEntity.ok(userResponse);
+
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(Map.of("error", "User not found"));
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("error", "Error fetching user: " + e.getMessage()));
         }
     }
 

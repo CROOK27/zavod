@@ -5,8 +5,16 @@ import com.alibou.security.department.Department;
 import com.alibou.security.employee.Employee;
 import com.alibou.security.user.User;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "orders")
 public class Orders
 {
@@ -19,7 +27,7 @@ public class Orders
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_manager", nullable = false)
+    @JoinColumn(name = "id_manager") // или "manager_id"
     private Employee manager;
 
     private String customer;

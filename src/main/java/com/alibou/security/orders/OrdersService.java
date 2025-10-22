@@ -1,23 +1,52 @@
 package com.alibou.security.orders;
 
+import com.alibou.security.employee.Employee;
+import com.alibou.security.employee.EmployeeRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
+@RequiredArgsConstructor // Эта аннотация автоматически создает конструктор
 public class OrdersService {
 
     private final OrdersRepository ordersRepository;
+    private final EmployeeRepository employeeRepository;
 
-    public OrdersService(OrdersRepository ordersRepository) {
-        this.ordersRepository = ordersRepository;
-    }
     public Optional<Orders> getOrderById(Long id) {
-        return ordersRepository.findById(id);
+        return ordersRepository.findById(id); // Нестатический вызов
     }
+
     public Orders saveUnit(Orders orders) {
-        return ordersRepository.save(orders);
+        return ordersRepository.save(orders); // Нестатический вызов
     }
-    public List<Orders> getAllOrders(){return ordersRepository.findAll();}
+
+    public List<Orders> getAllOrders() {
+        return ordersRepository.findAll(); // Нестатический вызов
+    }
+
+    public Orders createOrder(OrdersRequest request) {
+        // ВАЖНО: проверяем что managerId не null
+        if (request.getManagerId() == null) {
+            throw new IllegalArgumentException("Manager ID is required");
+        }
+
+        // Находим менеджера по ID
+        Employee manager = employeeRepository.findById(request.getManagerId())
+                .orElseThrow(() -> new RuntimeException("Manager not found with id: " + request.getManagerId()));
+
+        // Создаем заказ с ВСЕМИ полями
+        Orders order = Orders.builder()
+                .name(request.getName())
+                .customer(request.getCustomer())
+                .quest(request.getQuest())
+                .manager(manager) // Устанавливаем менеджера
+                .build();
+
+        return ordersRepository.save(order);
+    }
 }

@@ -2,10 +2,17 @@ package com.alibou.security.position;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Entity
+@Data
+@Builder
+@AllArgsConstructor
 @Table(name = "position")
 public class Position {
     @Id

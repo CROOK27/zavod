@@ -35,6 +35,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     List<Employee> findEmployeesByComplexCondition();
 
     // Дополнительные методы
+    Optional<Employee> findById(Long id);
     List<Employee> findByGender(String gender);
     List<Employee> findByBirthDateAfter(LocalDate date);
     List<Employee> findByBirthDateBefore(LocalDate date);

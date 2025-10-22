@@ -28,8 +28,7 @@ public class Employee {
     private LocalDate birthDate;
 
     @Column(name = "gender", length = 1)
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private String gender;
 
     @Column(name = "hire_date", nullable = false)
     private LocalDate hireDate;
@@ -38,7 +37,7 @@ public class Employee {
     private BigDecimal rate = BigDecimal.ONE;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_orders", nullable = false)
+    @JoinColumn(name = "id_orders")
     private Orders orders;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -49,7 +48,7 @@ public class Employee {
     @JoinColumn(name = "id_user")
     private User user;
 
-    public Employee(LocalDate birthDate, Gender gender,
+    public Employee(LocalDate birthDate, String gender,
                     LocalDate hireDate, BigDecimal rate, Orders orders, Position position, User user) {
         this.birthDate = birthDate;
         this.gender = gender;
@@ -67,7 +66,7 @@ public class Employee {
     }
     public String getFullName() {
         return user != null ?
-                user.getUsername():
+                user.getFullName():
                 "Неизвестно";
     }
 
@@ -91,11 +90,11 @@ public class Employee {
         this.birthDate = birthDate;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

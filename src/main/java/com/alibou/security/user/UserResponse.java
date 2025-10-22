@@ -20,7 +20,7 @@ public class UserResponse {
     // Статический метод для преобразования User в UserResponse
     public static UserResponse fromUser(User user) {
         return UserResponse.builder()
-                .id(user.getId())
+                .id(Math.toIntExact(user.getId()))
                 .firstname(user.getFirstname())
                 .lastname(user.getLastname())
                 .email(user.getEmail())
