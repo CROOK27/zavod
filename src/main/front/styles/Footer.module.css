@@ -1,0 +1,77 @@
+.footer {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-xl) var(--spacing-xl);
+    margin-top: auto;
+}
+
+.container {
+    max-width: 80rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+}
+
+.support {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-gray-300);
+}
+
+.supportIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.socialLabel {
+    color: var(--color-gray-300);
+    margin-right: var(--spacing-sm);
+}
+
+.socialLink {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity var(--transition-fast);
+}
+
+.socialLink:hover {
+    opacity: 0.8;
+}
+
+.socialLinkVk {
+    background-color: #0077ff;
+}
+
+.socialLinkTelegram {
+    background-color: #0088cc;
+}
+
+.socialLinkYoutube {
+    background-color: var(--color-danger);
+}
+
+.socialIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--color-white);
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+}

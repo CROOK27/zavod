@@ -1,0 +1,96 @@
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-gray-300);
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: var(--spacing-2xl);
+}
+
+.container {
+    background-color: var(--color-white);
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 50rem;
+}
+
+.title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: var(--color-gray-900);
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.ordersList {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.orderItem {
+    padding: var(--spacing-lg) 0;
+    border-bottom: 2px solid var(--color-gray-900);
+}
+
+.orderItem:last-child {
+    border-bottom: none;
+}
+
+.orderHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.projectName {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin: 0;
+}
+
+.sender {
+    font-size: 0.875rem;
+    color: var(--color-gray-700);
+    margin: 0;
+}
+
+.viewButton {
+    background: none;
+    border: none;
+    color: var(--color-gray-700);
+    font-size: 0.875rem;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    transition: color var(--transition-fast);
+}
+
+.viewButton:hover {
+    color: var(--color-gray-900);
+}
+
+.emptyState {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    color: var(--color-gray-600);
+    font-size: 1.125rem;
+}
+
+.loading {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    color: var(--color-gray-600);
+    font-size: 1.125rem;
+}

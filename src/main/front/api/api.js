@@ -1,5 +1,5 @@
 import $api, { API_URL } from './index';
-
+import axios from 'axios';
 export const register = async (userData) => {
   try {
     const response = await $api.post(`${API_URL}/auth/register`, userData);
@@ -17,26 +17,53 @@ export const register = async (userData) => {
     };
   }
 }
-export const login = async (credentials) => {
-  try {
-    const response = await $api.post(`${API_URL}/auth/authenticate`, credentials);
 
-    // Убедитесь что используете правильные названия полей
-    if (response.data.access_token && response.data.refresh_token) {
-        return { success: true, data: response.data };
-    } else {
+export const login = async (email, password) => {
+    try {
+        console.log('API: Отправка запроса на логин:', {
+            email,
+            password: password ? '***' : 'empty',
+            url: '/auth/authenticate'
+        });
+
+        const requestData = {
+            email: email,
+            password: password
+        };
+
+        console.log('API: Данные запроса:', JSON.stringify(requestData));
+
+        const response = await $api.post('/auth/authenticate', requestData, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            timeout: 10000
+        });
+
+        console.log('API: Успешный ответ от сервера:', response);
+        return {
+            success: true,
+            data: response.data
+        };
+    } catch (error) {
+        console.error('API: Полная ошибка при логине:', error);
+        console.error('API: Response data:', error.response?.data);
+        console.error('API: Response status:', error.response?.status);
+        console.error('API: Response headers:', error.response?.headers);
+
+        const errorMessage = error.response?.data?.message ||
+                           error.response?.data?.error ||
+                           error.message ||
+                           'Ошибка авторизации';
+
         return {
             success: false,
-            error: 'Invalid response from server'
+            error: errorMessage,
+            status: error.response?.status
         };
     }
-  } catch (error) {
-    return {
-        success: false,
-        error: error.response?.data?.error || error.response?.data?.message || 'Ошибка авторизации'
-    };
-  }
-}
+};
 export const getCurrentUser = async () => {
   try {
     const response = await $api.get(`${API_URL}/users/me`);
@@ -76,16 +103,36 @@ export const getUserById = async (id) => {
 }
 export const getUserByEmail = async (email) => {
   try {
-    const response = await $api.get(`${API_URL}/users/email/${email}`);
-    return { success: true, data: response.data };
+    console.log('API: Получение пользователя по email:', email);
+
+    // Получаем токен из localStorage
+    const token = localStorage.getItem('access_token');
+
+    if (!token) {
+      throw new Error('Токен авторизации не найден');
+    }
+
+    const response = await $api.get(`/api/v1/users/email/${email}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    console.log('API: Успешный ответ getUserByEmail:', response.data);
+    return {
+      success: true,
+      data: response.data
+    };
   } catch (error) {
-    console.error('Error in getUserByEmail:', error);
+    console.log('Error in getUserByEmail:', error);
     return {
       success: false,
-      error: error.response?.data?.message || 'Ошибка получения пользователя'
+      error: error.response?.data?.message || 'Ошибка получения пользователя',
+      status: error.response?.status
     };
   }
-}
+};
 
 export const getAllStaffSchedules = async () => {
   try {
