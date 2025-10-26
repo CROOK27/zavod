@@ -33,7 +33,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
             "OR (e.gender = 'Ж' AND YEAR(e.birthDate) > 1990) " +
             "ORDER BY e.birthDate ASC")
     List<Employee> findEmployeesByComplexCondition();
-
+    @Query("SELECT e FROM Employee e JOIN FETCH e.user u JOIN FETCH e.position p LEFT JOIN FETCH e.orders o WHERE u.id = :userId")
+    Optional<Employee> findByUserIdWithDetails(@Param("userId") Long userId);
     // Дополнительные методы
     Optional<Employee> findById(Long id);
     List<Employee> findByGender(String gender);

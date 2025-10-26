@@ -44,7 +44,7 @@ public class OrdersService {
                 .name(request.getName())
                 .customer(request.getCustomer())
                 .quest(request.getQuest())
-                .manager(manager) // Устанавливаем менеджера
+                .employee(manager) // Устанавливаем менеджера
                 .build();
 
         return ordersRepository.save(order);

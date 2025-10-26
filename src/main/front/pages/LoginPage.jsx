@@ -1,67 +1,83 @@
 import React, { useState } from 'react';
-import FormInput from '../components/FormInput';
-import { Link, useNavigate } from 'react-router-dom';
-import { observer } from 'mobx-react-lite';
-import Store from '../store/Store';
-import '../styles/Login.css';
-import Header from "../components/Header"
-import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
+import { Factory } from 'lucide-react';
+import {getUserByEmail} from '../api/api';
+import Store  from '../api/Store'; // ← импорт функции логина
+import styles from '../styles/LoginPage.module.css';
 
-const Login = observer(() => {
-  const navigate = useNavigate();
-  const store = new Store();
+export default function LoginPage ({ onLogin }) {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
+    const store = new Store();
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  });
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
 
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+        try {
+            // 🔹 Запрос к API
+            const response = await store.login(formData.email, formData.password);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
+            const userData = await getUserByEmail(formData.email);
+            localStorage.setItem('user', userData);
+            localStorage.setItem('isAuthenticated', 'true');
+            await new Promise(resolve => setTimeout(resolve, 100));
+            if (onLogin) onLogin(userData);
+            await new Promise(resolve => setTimeout(resolve, 50));
+            console.log("userData: ", userData);
+            const redirectPath = userData.data.role === 'ADMIN' ? '/director' : '/profile';
+            console.log('Перенаправление на:', redirectPath);
+            navigate(redirectPath);
+        } catch (err) {
+            console.error('Ошибка авторизации:', err);
+            setError('Ошибка при обращении к серверу. Попробуйте позже.');
+        }
+    };
 
-    try {
-      await store.login(formData.username, formData.password);
+    return (
+        <div className={styles.page}>
+            <div className={styles.formContainer}>
+                <div className={styles.logo}>
+                    <Factory size={36} color="#333" />
+                    <h1 className={styles.logoText}>Zavod.ru</h1>
+                </div>
 
-      if (store.isAuth) {
-        navigate('/profile');
-      } else {
-        setError("Ошибка входа");
-      }
-    } catch (err) {
-      setError(err.message || 'Неизвестная ошибка');
-    } finally {
-      setLoading(false);
-    }
-  };
+                <form className={styles.form} onSubmit={handleSubmit}>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="E-mail"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className={styles.input}
+                        required
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Пароль"
+                        value={formData.password}
+                        onChange={handleChange}
+                        className={styles.input}
+                        required
+                    />
 
-  return (
-    <>
-      <Header />
-      <div className="login-page">
-        <h2>Вход в систему</h2>
-        {error && <div className="error-message">{error}</div>}
-        <form onSubmit={handleSubmit}>
-          <FormInput label="Логин" type="text" name="username" value={formData.username} onChange={handleChange} required />
-          <FormInput label="Пароль" type="password" name="password" value={formData.password} onChange={handleChange} required />
-          <button type="submit" disabled={loading}>
-            {loading ? 'Загрузка...' : 'Войти'}
-          </button>
-        </form>
-        <p>Нет аккаунта? <Link to="/register">Зарегистрироваться</Link></p>
-      </div>
-      <Footer />
-    </>
-  );
-});
+                    {error && <p className={styles.error}>{error}</p>}
 
-export default Login;
+                    <button type="submit" className={styles.button}>
+                        Войти
+                    </button>
+                </form>
+            </div>
+        </div>
+    );
+}

@@ -1,5 +1,6 @@
 import $api, { API_URL } from './index';
 import axios from 'axios';
+
 export const register = async (userData) => {
   try {
     const response = await $api.post(`${API_URL}/auth/register`, userData);
@@ -89,7 +90,17 @@ export const RefreshToken = async (refresh_token) => {
     };
   }
 }
-
+export const getUserByToken = async (token = null) => {
+    if (token) {
+      return axios.get(`${API_URL}/users/by-token`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    }
+    // Иначе используем токен из localStorage через интерцептор
+    return api.get('/users/by-token');
+  }
 export const getUserById = async (id) => {
   try {
     const response = await $api.get(`${API_URL}/users/${id}`);
@@ -112,7 +123,7 @@ export const getUserByEmail = async (email) => {
       throw new Error('Токен авторизации не найден');
     }
 
-    const response = await $api.get(`/api/v1/users/email/${email}`, {
+    const response = await $api.get(`${API_URL}/users/email/${email}`, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
@@ -293,6 +304,8 @@ export const getOrderById = async (id) => {
 export const createOrder = async (orderData) => {
   try {
     const response = await $api.post(`${API_URL}/orders`, orderData);
+    console.log("orders data: ", orderData);
+    console.log("orders create: ", response);
     return { success: true, data: response.data };
   } catch (error) {
     return {
@@ -304,9 +317,7 @@ export const createOrder = async (orderData) => {
 
 export const createEmployee = async (title) => {
   try {
-    const response = await $api.get(`${API_URL}/employees`, {
-      params: { title }
-    });
+    const response = await $api.post(`${API_URL}/employees`, title);
     return { success: true, data: response.data };
   } catch (error) {
     return {
@@ -323,6 +334,17 @@ export const getAllEmployees = async () => {
     return {
       success: false,
       error: error.response?.data?.message || 'Ошибка получения сотрудников'
+    };
+  }
+}
+export const getEmployeeByUserId = async (id) => {
+  try {
+    const response = await $api.get(`${API_URL}/employees/by-user-with-details/${id}`);
+    return { success: true, data: response.data };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.response?.data?.message || 'Ошибка получения сотрудника'
     };
   }
 }
@@ -520,7 +542,7 @@ export const deleteDepartment = async (id) => {
 }
 export const getAllBranches = async () => {
   try {
-    const response = await $api.get(`${API_URL}/branch`);
+    const response = await $api.get(`${API_URL}/branches`);
     return { success: true, data: response.data };
   } catch (error) {
     return {
@@ -532,7 +554,7 @@ export const getAllBranches = async () => {
 
 export const getBranchById = async (id) => {
   try {
-    const response = await $api.get(`${API_URL}/branch/${id}`);
+    const response = await $api.get(`${API_URL}/branches/${id}`);
     return { success: true, data: response.data };
   } catch (error) {
     return {
@@ -544,7 +566,7 @@ export const getBranchById = async (id) => {
 
 export const createBranch = async (branchData) => {
   try {
-    const response = await $api.post(`${API_URL}/branch`, branchData);
+    const response = await $api.post(`${API_URL}/branches`, branchData);
     return { success: true, data: response.data };
   } catch (error) {
     return {
@@ -556,7 +578,7 @@ export const createBranch = async (branchData) => {
 
 export const updateBranch = async (id, branchData) => {
   try {
-    const response = await $api.put(`${API_URL}/branch/${id}`, branchData);
+    const response = await $api.put(`${API_URL}/branches/${id}`, branchData);
     return { success: true, data: response.data };
   } catch (error) {
     return {
@@ -568,7 +590,7 @@ export const updateBranch = async (id, branchData) => {
 
 export const deleteBranch = async (id) => {
   try {
-    const response = await $api.delete(`${API_URL}/branch/${id}`);
+    const response = await $api.delete(`${API_URL}/branches/${id}`);
     return { success: true, data: response.data };
   } catch (error) {
     return {

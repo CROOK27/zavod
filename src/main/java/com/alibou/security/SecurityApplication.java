@@ -18,7 +18,7 @@ public class SecurityApplication {
 //	) {
 //		return args -> {
 //			var admin = RegisterRequest.builder()
-//					.firstname("Admin")
+//					.firstname("Adminm")
 //					.lastname("Admin")
 //					.email("admin@mail.com")
 //					.password("password")

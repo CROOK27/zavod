@@ -16,10 +16,6 @@ public class UserController {
 
     private final UserService service;
     private final  UserRepository repository;
-    @GetMapping("/{id}")
-    public Optional<User> userInfo(Long id){
-        return repository.findById(id);
-    }
 
     @GetMapping("/me")
     public ResponseEntity<UserResponse> getCurrentUser(Principal principal) {
@@ -67,7 +63,25 @@ public class UserController {
                     .body(Map.of("error", "Error fetching user: " + e.getMessage()));
         }
     }
+    @GetMapping("/by-token")
+    public ResponseEntity<UserResponse> getUserByToken(@RequestHeader("Authorization") String authHeader) {
+        try {
+            if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
 
+            String token = authHeader.substring(7); // Убираем "Bearer "
+            User user = service.getUserByToken(token);
+
+            if (user != null) {
+                return ResponseEntity.ok(UserResponse.fromUser(user));
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
     @PatchMapping
     public ResponseEntity<?> changePassword(
           @RequestBody ChangePasswordRequest request,

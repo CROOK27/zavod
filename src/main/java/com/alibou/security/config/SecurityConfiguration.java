@@ -56,7 +56,10 @@ public class SecurityConfiguration {
             "/api/v1/positions", // GET запросы для всех
             "/api/v1/positions/**",
             "/api/orders", // ДОБАВЬТЕ ЭТО
-            "/api/orders/**"};
+            "/api/orders/**",
+            "/api/v1/employees", // ДОБАВЬТЕ ЭТУ СТРОКУ
+            "/api/v1/employees/**"
+    };
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;

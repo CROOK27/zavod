@@ -20,7 +20,6 @@ public class Branch {
     private String nameBranch;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_department", nullable = false, unique=true)
     private List<Department> departments = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY)
@@ -67,4 +66,5 @@ public class Branch {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
+
 }

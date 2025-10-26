@@ -11,29 +11,31 @@ import RegisterEmployeePage from './pages/RegisterEmployeePage';
 import OrdersPage from './pages/OrdersPage';
 import OrderApprovalPage from './pages/OrderApprovalPage';
 import OrderCompletionPage from './pages/OrderCompletionPage';
+import CreatePositionPage from './pages/CreatePositionPage';
 
 export default function App() {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [authChecked, setAuthChecked] = useState(false);
 
     // Загружаем пользователя при монтировании
     useEffect(() => {
         console.log('App: Загрузка состояния при запуске...');
 
         const savedUser = localStorage.getItem('user');
-        const isAuthenticated = localStorage.getItem('isAuthenticated');
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('access_token');
 
         console.log('App: localStorage user:', savedUser);
-        console.log('App: localStorage isAuthenticated:', isAuthenticated);
         console.log('App: localStorage token:', token ? 'exists' : 'none');
 
-        if (isAuthenticated === 'true' && savedUser && token) {
+        if (token && savedUser) {
             try {
                 const userData = JSON.parse(savedUser);
                 console.log('App: Восстанавливаем пользователя:', userData);
-                setUser(userData);
+
+                // Унифицированная обработка: извлекаем data если есть
+                const userToSet = userData.data || userData;
+                console.log('App: Устанавливаем пользователя:', userToSet);
+                setUser(userToSet);
             } catch (e) {
                 console.error('App: Ошибка парсинга user data:', e);
                 handleLogout();
@@ -43,21 +45,30 @@ export default function App() {
             setUser(null);
         }
 
-        setAuthChecked(true);
         setLoading(false);
     }, []);
 
     const handleLogin = (userData) => {
         console.log('App: handleLogin вызван с данными:', userData);
 
+        // Унифицированная обработка: извлекаем data если есть
+        const userToSave = userData.data || userData;
+        console.log('App: Сохраняем пользователя:', userToSave);
+
+        if (!userToSave || !userToSave.id) {
+            console.error('App: Неверные данные пользователя:', userToSave);
+            return;
+        }
+
         // ОБЯЗАТЕЛЬНО обновляем состояние
-        setUser(userData);
+        setUser(userToSave);
 
         // Дублируем в localStorage для надежности
-        localStorage.setItem('user', JSON.stringify(userData));
+        localStorage.setItem('user', JSON.stringify(userToSave)); // Сохраняем только данные пользователя
         localStorage.setItem('isAuthenticated', 'true');
 
-        console.log('App: Состояние обновлено, новый user:', userData);
+        console.log('App: Состояние обновлено, новый user:', userToSave);
+        console.log('App: Роль пользователя:', userToSave.role);
     };
 
     const handleLogout = () => {
@@ -66,7 +77,7 @@ export default function App() {
         // Очищаем localStorage
         localStorage.removeItem('user');
         localStorage.removeItem('isAuthenticated');
-        localStorage.removeItem('token');
+        localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
 
         // Сбрасываем состояние
@@ -75,7 +86,7 @@ export default function App() {
         console.log('App: Logout completed');
     };
 
-    const isAuthenticated = !!user && localStorage.getItem('isAuthenticated') === 'true';
+    const isAuthenticated = !!user && localStorage.getItem('access_token');
 
     // Пока проверяем аутентификацию, показываем загрузку
     if (loading) {
@@ -93,6 +104,7 @@ export default function App() {
     }
 
     console.log('App: Рендер - isAuthenticated:', isAuthenticated, 'user:', user);
+    console.log('App: Роль пользователя для маршрутизации:', user?.role);
 
     return (
         <Router>
@@ -105,7 +117,7 @@ export default function App() {
                     path="/login"
                     element={
                         isAuthenticated ? (
-                            <Navigate to={user.role === 'DIRECTOR' ? '/director' : '/profile'} replace />
+                            <Navigate to={user?.role === 'ADMIN' ? '/director' : '/profile'} replace />
                         ) : (
                             <LoginPage onLogin={handleLogin} />
                         )
@@ -117,7 +129,7 @@ export default function App() {
                     path="/profile"
                     element={
                         isAuthenticated ? (
-                            user.role === 'DIRECTOR' ? (
+                            user?.role === 'ADMIN' ? (
                                 <Navigate to="/director" replace />
                             ) : (
                                 <ProfilePage user={user} onLogout={handleLogout} />
@@ -133,7 +145,7 @@ export default function App() {
                     path="/director"
                     element={
                         isAuthenticated ? (
-                            user.role === 'DIRECTOR' ? (
+                            user?.role === 'ADMIN' ? (
                                 <DirectorProfilePage user={user} onLogout={handleLogout} />
                             ) : (
                                 <Navigate to="/profile" replace />
@@ -167,7 +179,20 @@ export default function App() {
                         )
                     }
                 />
-
+                <Route
+                    path="/create-position"
+                    element={
+                        isAuthenticated ? (
+                            user?.role === 'ADMIN' ? (
+                                <CreatePositionPage user={user} onLogout={handleLogout} />
+                            ) : (
+                                <Navigate to="/profile" replace />
+                            )
+                        ) : (
+                            <Navigate to="/login" replace />
+                        )
+                    }
+                />
                 {/* Заказы */}
                 <Route
                     path="/orders"
@@ -184,7 +209,7 @@ export default function App() {
                 <Route
                     path="/order-approval/:orderId"
                     element={
-                        isAuthenticated && user.role === 'DIRECTOR' ? (
+                        isAuthenticated && user?.role === 'ADMIN' ? (
                             <OrderApprovalPage user={user} onLogout={handleLogout} />
                         ) : isAuthenticated ? (
                             <Navigate to="/profile" replace />

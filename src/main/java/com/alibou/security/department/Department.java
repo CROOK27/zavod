@@ -1,5 +1,6 @@
 package com.alibou.security.department;
 
+import com.alibou.security.branch.Branch;
 import com.alibou.security.employee.Employee;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -68,5 +69,8 @@ public class Department {
 
     public void setChief(Employee chief) {
         this.chief = chief;
+    }
+
+    public void setBranch(Branch savedBranch) {
     }
 }

@@ -16,9 +16,9 @@ public class OrdersResponse {
         this.name = order.getName();
         this.customer = order.getCustomer();
         this.quest = order.getQuest();
-        if (order.getmanager() != null) {
-            this.managerId = order.getmanager().getId();
-            this.managerName = order.getmanager().getFullName(); // если есть такой метод
+        if (order.getEmployee() != null) {
+            this.managerId = order.getEmployee().getId();
+            this.managerName = order.getEmployee().getFullName(); // если есть такой метод
         }
     }
 }

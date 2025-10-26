@@ -23,6 +23,8 @@ public interface PositionRepository extends JpaRepository<Position, Long> {
     List<Object[]> findMinMaxSalary();
 
     // Простые методы
+
+
     Optional<Position> findByName(String name);
     List<Position> findByGrade(Integer grade);
     List<Position> findBySalaryBetween(Double minSalary, Double maxSalary);

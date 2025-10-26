@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Factory } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/RegisterEmployeePage.module.css';
-import { register, getAllPositions, createEmployee } from '../api/api';
+import { register, getAllPositions, createEmployee, getUserByEmail } from '../api/api';
 
 export default function RegisterEmployeePage({ onLogout }) {
     const [formData, setFormData] = useState({
@@ -10,12 +10,12 @@ export default function RegisterEmployeePage({ onLogout }) {
         lastname: '',
         email: '',
         password: '',
-        birthDate: '',
-        positionId: '',
         phone: '',
+        birthDate: '',
         gender: '',
         hireDate: '',
-        rate: '1.0'
+        rate: '1.0',
+        positionId: ''
     });
 
     const [positions, setPositions] = useState([]);
@@ -25,7 +25,6 @@ export default function RegisterEmployeePage({ onLogout }) {
 
     const navigate = useNavigate();
 
-    // Загрузка списка должностей
     useEffect(() => {
         const fetchPositions = async () => {
             try {
@@ -58,7 +57,7 @@ export default function RegisterEmployeePage({ onLogout }) {
         setError('');
 
         try {
-            // Сначала регистрируем пользователя
+            // Регистрируем пользователя
             const userData = {
                 firstname: formData.firstname,
                 lastname: formData.lastname,
@@ -75,18 +74,26 @@ export default function RegisterEmployeePage({ onLogout }) {
                 setLoading(false);
                 return;
             }
+            const userResponse = await getUserByEmail(formData.email);
 
-            // Затем создаем сотрудника
+            if (!userResponse.success) {
+                setError('Не удалось найти созданного пользователя');
+                setLoading(false);
+                return;
+            }
+            // Создаем сотрудника
             const employeeData = {
                 birthDate: formData.birthDate,
-                gender: formData.gender || 'M',
+                gender: formData.gender,
                 hireDate: formData.hireDate || new Date().toISOString().split('T')[0],
                 rate: parseFloat(formData.rate),
-                position: { id: parseInt(formData.positionId) },
-                user: { id: registerResponse.data.id }
+                userId: userResponse.data.id,
+                positionId: parseInt(formData.positionId),
+                orders: null
             };
-
+            console.log('Employee data:', employeeData);
             const employeeResponse = await createEmployee(employeeData);
+            console.log("RegisterEmployeePage Response: ", employeeResponse);
 
             if (employeeResponse.success) {
                 alert('Сотрудник успешно зарегистрирован!');

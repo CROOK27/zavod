@@ -9,7 +9,8 @@ export default function CreatePlanPage({ onNavigate, onLogout }) {
         companyName: '',
         orderName: '',
         workshop: '',
-        executor: ''
+        executor: '',
+        quest: ''
     });
 
     const [workshops, setWorkshops] = useState([]);
@@ -70,11 +71,8 @@ export default function CreatePlanPage({ onNavigate, onLogout }) {
             const orderData = {
                 name: formData.orderName,
                 customer: formData.companyName,
-                // Здесь нужно передать ID менеджера (исполнителя) и другие необходимые поля
-                // В реальном приложении нужно будет настроить соответствие полей
-                manager: {
-                    id: parseInt(formData.executor)
-                }
+                quest: formData.quest,
+                managerId: parseInt(formData.executor)
             };
 
             const response = await createOrder(orderData);
@@ -87,7 +85,8 @@ export default function CreatePlanPage({ onNavigate, onLogout }) {
                     companyName: '',
                     orderName: '',
                     workshop: '',
-                    executor: ''
+                    executor: '',
+                    quest: ''
                 });
 
                 // Перенаправление на страницу заказов или другую страницу
@@ -203,7 +202,18 @@ export default function CreatePlanPage({ onNavigate, onLogout }) {
                                 required
                             />
                         </div>
-
+                        <div className={styles.inputGroup}>
+                            <label className={styles.label}>Описание заказа</label>
+                            <textarea
+                                name="quest"
+                                value={formData.quest}
+                                onChange={handleChange}
+                                placeholder="Введите описание заказа"
+                                className={styles.textarea}
+                                rows="4"
+                                required
+                            />
+                        </div>
                         <button
                             type="submit"
                             className={styles.submitButton}

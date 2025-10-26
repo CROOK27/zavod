@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,6 @@ public class EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final UserRepository userRepository;
     private final PositionRepository positionRepository;
-    private final OrdersRepository ordersRepository;
 
     // Метод для создания сотрудника из DTO
     public Employee createEmployee(EmployeeRequest request) {
@@ -40,21 +40,15 @@ public class EmployeeService {
         Position position = positionRepository.findById(request.getPositionId())
                 .orElseThrow(() -> new RuntimeException("Position not found with id: " + request.getPositionId()));
 
-        Orders orders = null;
-        if (request.getOrdersId() != null) {
-            orders = ordersRepository.findById(request.getOrdersId())
-                    .orElse(null); // orders может быть optional
-        }
 
         // Создаем нового сотрудника
         Employee employee = Employee.builder()
-                .birthDate(request.getBirthDate())
+                .birthDate(LocalDate.parse(request.getBirthDate()))
                 .gender(request.getGender())
-                .hireDate(request.getHireDate())
+                .hireDate(LocalDate.parse(request.getHireDate()))
                 .rate(request.getRate())
                 .user(user)
                 .position(position)
-                .orders(orders)
                 .build();
 
         return employeeRepository.save(employee);
@@ -95,5 +89,10 @@ public class EmployeeService {
 
     public void deleteEmployeeById(Long id) {
         employeeRepository.deleteById(id);
+    }
+    // Получить сотрудника по ID пользователя или выбросить исключение
+    public Employee getEmployeeByUserIdOrThrow(Long userId) {
+        return employeeRepository.findByUserIdWithDetails(userId)
+                .orElseThrow(() -> new RuntimeException("Employee not found for user id: " + userId));
     }
 }
