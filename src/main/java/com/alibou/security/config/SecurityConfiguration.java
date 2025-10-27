@@ -53,11 +53,11 @@ public class SecurityConfiguration {
             "/webjars/**",
             "/swagger-ui.html",
             "/api/v1/auth/**",
-            "/api/v1/positions", // GET запросы для всех
+            "/api/v1/positions",
             "/api/v1/positions/**",
-            "/api/orders", // ДОБАВЬТЕ ЭТО
+            "/api/orders",
             "/api/orders/**",
-            "/api/v1/employees", // ДОБАВЬТЕ ЭТУ СТРОКУ
+            "/api/v1/employees",
             "/api/v1/employees/**"
     };
     private final JwtAuthenticationFilter jwtAuthFilter;
@@ -72,6 +72,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST_URL)
                                 .permitAll()
+                                .requestMatchers("/api/v1/orders/**").authenticated()
+                                .requestMatchers("/api/orders/**").authenticated()
                                 .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), HR.name())
                                 .requestMatchers(GET, "/api/v1/management/**").hasAnyAuthority(ADMIN_READ.name(), HR_READ.name())
                                 .requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(), HR_CREATE.name())

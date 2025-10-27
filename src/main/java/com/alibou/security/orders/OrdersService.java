@@ -44,9 +44,27 @@ public class OrdersService {
                 .name(request.getName())
                 .customer(request.getCustomer())
                 .quest(request.getQuest())
-                .employee(manager) // Устанавливаем менеджера
+                .employee(manager)
+                .status("pending")
                 .build();
 
         return ordersRepository.save(order);
     }
+    public List<Orders> getOrdersByUserId(Long userId) {
+        return ordersRepository.findByUserId(userId);
+    }
+    public Orders updateOrderStatus(Long orderId, String status) {
+        Orders order = ordersRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Order not found with id: " + orderId));
+
+        order.setStatus(status);
+        return ordersRepository.save(order);
+    }
+    public void deleteOrder(Long id) {
+        Orders order = ordersRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Order not found with id: " + id));
+
+        ordersRepository.delete(order);
+    }
+
 }

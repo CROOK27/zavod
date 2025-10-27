@@ -7,6 +7,7 @@ public class OrdersRequest {
     private String customer;
     private String quest;
     private Long managerId;
+    private String status = "pending";
 
     // Конструктор по умолчанию
     public OrdersRequest() {}
@@ -23,4 +24,7 @@ public class OrdersRequest {
 
     public Long getManagerId() { return managerId; }
     public void setManagerId(Long managerId) { this.managerId = managerId; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }

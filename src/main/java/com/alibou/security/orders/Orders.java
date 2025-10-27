@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor // ← ДОБАВЬТЕ ЭТУ АННОТАЦИЮ
 @Entity
 @Table(name = "orders")
 public class Orders {
@@ -22,23 +23,20 @@ public class Orders {
     private String customer;
     private String quest;
 
-    // ManyToOne связь с сотрудником - ДОБАВЬТЕ ЭТО ПОЛЕ!
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
-    private Employee employee; // ← ЭТОГО ПОЛЯ НЕТ В ВАШЕМ КЛАССЕ!
+    private Employee employee;
 
-    // Дополнительные поля
+    @Column(columnDefinition = "VARCHAR(50) DEFAULT 'pending'", nullable = false)
     private String status;
 
-    // Конструкторы
-
-    public Orders(Long id, String name, String customer, String quest, Employee employee, String status) {
-        this.id = id;
+    // Конструктор для создания новых заказов
+    public Orders(String name, String customer, String quest, Employee employee) {
         this.name = name;
         this.customer = customer;
         this.quest = quest;
         this.employee = employee;
-        this.status = status;
+        this.status = "pending";
     }
 
     // Геттеры и сеттеры
@@ -54,7 +52,6 @@ public class Orders {
     public String getQuest() { return quest; }
     public void setQuest(String quest) { this.quest = quest; }
 
-    // ДОБАВЬТЕ ЭТИ ГЕТТЕРЫ И СЕТТЕРЫ!
     public Employee getEmployee() { return employee; }
     public void setEmployee(Employee employee) { this.employee = employee; }
 
