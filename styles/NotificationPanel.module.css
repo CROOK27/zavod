@@ -1,0 +1,45 @@
+.panel {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 250px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 10;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 6px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.notification:hover {
+    background-color: #f2f2f2;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+.info {
+    color: #007bff;
+}
+
+.empty {
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+}

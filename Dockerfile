@@ -1,10 +1,8 @@
-FROM openjdk:17-jdk-slim
+FROM httpd:latest
 
-WORKDIR /app
+# Копируем собранные файлы React из папки dist
+COPY dist/ /usr/local/apache2/htdocs/
 
-# Копируем собранный JAR файл
-COPY target/*.jar app.jar
+EXPOSE 80
 
-EXPOSE 8080
-
-ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD ["httpd-foreground"]

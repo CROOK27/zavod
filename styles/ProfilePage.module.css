@@ -1,0 +1,496 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f4f4f4;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.container {
+    display: flex;
+    gap: 40px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Левая карточка пользователя */
+.userCard {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+}
+
+.userPhoto {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.userName {
+    margin-bottom: 10px;
+}
+
+/* Правая часть */
+.ordersSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ordersTitle {
+    margin-bottom: 20px;
+}
+
+.ordersGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* Карточка заказа */
+.orderCard {
+    background: white;
+    border-radius: 16px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.orderCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.orderImage {
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.orderTitle {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.orderStatus {
+    color: #555;
+}
+
+/* Кнопки */
+.actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    color: white;
+    transition: background-color 0.2s ease;
+}
+
+.yellow {
+    background-color: #f8c646;
+}
+
+.yellow:hover {
+    background-color: #e2b636;
+}
+
+.blue {
+    background-color: #4a90e2;
+}
+
+.blue:hover {
+    background-color: #3a78c8;
+}
+.ordersList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.orderCard {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.orderCard:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.orderHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.orderTitle {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+    flex: 1;
+}
+
+.orderStatus {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.statusPending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.statusApproved {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.statusCompleted {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.statusFailed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.statusInProgress {
+    background-color: #cce7ff;
+    color: #004085;
+}
+
+.statusDefault {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+.orderDetails {
+    margin-bottom: 10px;
+}
+
+.orderDetails p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.orderId {
+    font-size: 12px;
+    color: #999;
+    text-align: right;
+}
+
+.noOrders {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.noOrders p {
+    margin-bottom: 15px;
+    color: #666;
+}
+.noOrdersSubtitle {
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f4f4f4;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.container {
+    display: flex;
+    gap: 40px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Левая карточка пользователя */
+.userCard {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    height: fit-content;
+}
+
+.userPhoto {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.userName {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Правая часть - панель HR */
+.hrSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ordersBlock {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.ordersTitle {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.ordersList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.orderCard {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.orderCard:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.orderHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.orderTitle {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+    flex: 1;
+}
+
+.orderStatus {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.statusPending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.statusApproved {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.statusCompleted {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.statusFailed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.statusInProgress {
+    background-color: #cce7ff;
+    color: #004085;
+}
+
+.statusRejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.statusDefault {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+.orderDetails {
+    margin-bottom: 10px;
+}
+
+.orderDetails p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.orderActions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.smallButton {
+    padding: 6px 12px;
+    font-size: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.approvedText {
+    color: #28a745;
+    font-weight: 500;
+}
+
+.rejectedText {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+.orderId {
+    font-size: 12px;
+    color: #999;
+    text-align: right;
+}
+
+.noOrders {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    border: 1px dashed #ddd;
+    border-radius: 8px;
+}
+
+/* Панель управления HR */
+.hrActions {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.actionsTitle {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Кнопки */
+.button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    color: white;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.yellow {
+    background-color: #f8c646;
+}
+
+.yellow:hover {
+    background-color: #e2b636;
+}
+
+.blue {
+    background-color: #4a90e2;
+}
+
+.blue:hover {
+    background-color: #3a78c8;
+}
+
+.green {
+    background-color: #28a745;
+}
+
+.green:hover {
+    background-color: #218838;
+}
+
+.red {
+    background-color: #dc3545;
+}
+
+.red:hover {
+    background-color: #c82333;
+}
+
+.error {
+    color: #dc3545;
+    text-align: center;
+    margin-bottom: 20px;
+}

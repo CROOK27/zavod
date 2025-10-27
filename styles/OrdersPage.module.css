@@ -1,0 +1,569 @@
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-gray-300);
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: var(--spacing-2xl);
+}
+
+.container {
+    background-color: var(--color-white);
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 50rem;
+}
+
+.title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: var(--color-gray-900);
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.ordersList {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.orderItem {
+    padding: var(--spacing-lg) 0;
+    border-bottom: 2px solid var(--color-gray-900);
+}
+
+.orderItem:last-child {
+    border-bottom: none;
+}
+
+.orderHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.projectName {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin: 0;
+}
+
+.sender {
+    font-size: 0.875rem;
+    color: var(--color-gray-700);
+    margin: 0;
+}
+
+.viewButton {
+    background: none;
+    border: none;
+    color: var(--color-gray-700);
+    font-size: 0.875rem;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    transition: color var(--transition-fast);
+}
+
+.viewButton:hover {
+    color: var(--color-gray-900);
+}
+
+.emptyState {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    color: var(--color-gray-600);
+    font-size: 1.125rem;
+}
+
+.loading {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    color: var(--color-gray-600);
+    font-size: 1.125rem;
+}
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f4f4f4;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+}
+
+.title {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: #666;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+}
+
+.ordersList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.orderCard {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.orderCard:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.orderHeader {
+    margin-bottom: 15px;
+}
+
+.orderInfo {
+    flex: 1;
+}
+
+.orderTitle {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.orderMeta {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.statusPending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.statusApproved {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.statusCompleted {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.statusFailed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.statusInProgress {
+    background-color: #cce7ff;
+    color: #004085;
+}
+
+.statusDefault {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+.orderId {
+    font-size: 14px;
+    color: #999;
+}
+
+.orderDetail {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.orderActions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.viewButton {
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.viewButton:hover {
+    background-color: #3a78c8;
+}
+
+.statusButtons {
+    display: flex;
+    gap: 10px;
+}
+
+.statusButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+.statusButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.completedButton {
+    background-color: #28a745;
+    color: white;
+}
+
+.completedButton:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.failedButton {
+    background-color: #dc3545;
+    color: white;
+}
+
+.failedButton:hover:not(:disabled) {
+    background-color: #c82333;
+}
+.statusButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+.statusButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.completedButton {
+    background-color: #28a745; /* Зеленый */
+    color: white;
+}
+
+.completedButton:hover:not(:disabled) {
+    background-color: #218838; /* Темно-зеленый при наведении */
+}
+
+.failedButton {
+    background-color: #dc3545; /* Красный */
+    color: white;
+}
+
+.failedButton:hover:not(:disabled) {
+    background-color: #c82333; /* Темно-красный при наведении */
+}
+/* Добавьте эти стили в ваш CSS файл */
+
+.roleInfo {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+.directorNote {
+    color: #dc3545;
+    font-weight: bold;
+    margin: 0;
+}
+
+.managerNote {
+    color: #0d6efd;
+    font-weight: bold;
+    margin: 0;
+}
+
+.orderMeta {
+    margin: 10px 0;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 5px 0;
+}
+
+.statusBadge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.statusPending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.statusInProgress {
+    background-color: #cce7ff;
+    color: #004085;
+}
+
+.statusCompleted {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.statusApproved {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.statusRejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.statusDefault {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+.orderActions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.approveButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.approveButton:hover {
+    background-color: #218838;
+}
+
+.statusButton {
+    background-color: #ffc107;
+    color: #212529;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.statusButton:hover {
+    background-color: #e0a800;
+}
+
+.viewButton {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.viewButton:hover {
+    background-color: #545b62;
+}
+/* Добавьте эти стили в существующий CSS */
+
+.roleInfo {
+    margin-bottom: 20px;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.directorNote {
+    color: #dc3545;
+    font-weight: bold;
+    margin: 0;
+    background: #f8d7da;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.managerNote {
+    color: #0d6efd;
+    font-weight: bold;
+    margin: 0;
+    background: #d1ecf1;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.orderInfo {
+    flex: 1;
+}
+
+.orderMeta {
+    margin: 10px 0;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 5px 0;
+}
+
+.statusBadge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.statusPending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.statusInProgress {
+    background-color: #cce7ff;
+    color: #004085;
+}
+
+.statusCompleted {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.statusApproved {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.statusRejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.statusFailed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.statusDefault {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+.orderActions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.approveButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.approveButton:hover {
+    background-color: #218838;
+}
+
+.statusButton {
+    background-color: #ffc107;
+    color: #212529;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.statusButton:hover {
+    background-color: #e0a800;
+}
+
+.pendingInfo {
+    color: #856404;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.rejectedInfo {
+    color: #721c24;
+    font-style: italic;
+    font-size: 14px;
+}
