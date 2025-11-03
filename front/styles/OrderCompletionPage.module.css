@@ -1,0 +1,263 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.imageWrapper {
+    flex: 0 0 40%;
+}
+
+.image {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.info {
+    flex: 1;
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.description {
+    margin-bottom: 15px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Кнопки действий */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.2s ease;
+}
+
+.green {
+    background-color: #4CAF50;
+}
+
+.green:hover {
+    background-color: #3c9b41;
+}
+
+.red {
+    background-color: #f44336;
+}
+
+.red:hover {
+    background-color: #d9372d;
+}
+.statusButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+.statusButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.completedButton {
+    background-color: #28a745; /* Зеленый */
+    color: white;
+}
+
+.completedButton:hover:not(:disabled) {
+    background-color: #218838; /* Темно-зеленый при наведении */
+}
+
+.failedButton {
+    background-color: #dc3545; /* Красный */
+    color: white;
+}
+
+.failedButton:hover:not(:disabled) {
+    background-color: #c82333; /* Темно-красный при наведении */
+}
+.directorActions, .userActions {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border-left: 4px solid #007bff;
+}
+
+.actionsTitle {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 18px;
+}
+
+.statusButtons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    min-width: 120px;
+}
+
+.button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.approveButton {
+    background-color: #28a745;
+    color: white;
+}
+
+.approveButton:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.rejectButton {
+    background-color: #dc3545;
+    color: white;
+}
+
+.rejectButton:hover:not(:disabled) {
+    background-color: #c82333;
+}
+
+.completedButton {
+    background-color: #28a745;
+    color: white;
+}
+
+.completedButton:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.failedButton {
+    background-color: #dc3545;
+    color: white;
+}
+
+.failedButton:hover:not(:disabled) {
+    background-color: #c82333;
+}
+
+.statusMessage {
+    margin-top: 20px;
+    padding: 15px;
+    background: #e9ecef;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.statusMessage p {
+    margin: 0;
+    font-size: 16px;
+}
+/* Добавьте эти стили в ваш CSS файл */
+
+.headerSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.pdfButton {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pdfButton:hover:not(:disabled) {
+    background-color: #c82333;
+}
+
+.pdfButton:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .headerSection {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pdfButton {
+        align-self: stretch;
+        text-align: center;
+        justify-content: center;
+    }
+}

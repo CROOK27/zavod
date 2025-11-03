@@ -1,0 +1,147 @@
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #d9d9d9;
+    overflow: hidden;
+}
+
+.formContainer {
+    background-color: white;
+    border-radius: 12px;
+    padding: 3rem 4rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    min-width: 350px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logoText {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+.input {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    font-size: 1rem;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    background-color: #e6e6e6;
+}
+
+/* Стили для контейнера пароля */
+.passwordContainer {
+    position: relative;
+    width: 100%;
+}
+
+.passwordInput {
+    padding: 0.75rem 45px 0.75rem 1rem; /* Отступ справа для кнопки */
+    border: none;
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    font-size: 1rem;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.passwordInput:focus {
+    background-color: #e6e6e6;
+}
+
+.passwordToggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    padding: 4px;
+    border-radius: 4px;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.passwordToggle:hover {
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.button {
+    background-color: #ccff00;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.button:hover {
+    background-color: #b8f000;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+    padding: 8px 12px;
+    background-color: #fdf2f2;
+    border: 1px solid #fbd5d5;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 480px) {
+    .formContainer {
+        padding: 2rem 1.5rem;
+        min-width: 300px;
+        margin: 0 1rem;
+    }
+
+    .logoText {
+        font-size: 1.3rem;
+    }
+
+    .input, .passwordInput {
+        padding: 0.65rem 0.9rem;
+    }
+}

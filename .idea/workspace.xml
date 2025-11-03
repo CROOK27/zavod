@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0696ad74-66aa-48f3-8f16-1e37625b1e74" name="Changes" comment="Database addition">
+      <change beforePath="$PROJECT_DIR$/backend/.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/eslint.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/App.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/api/AuthService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/api/JWT.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/api/Store.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/api/api.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/api/auth.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/api/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/assets/react.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/components/Footer.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/components/Header.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/components/NotificationPanel.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/main.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/CreatePlanPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/CreatePositionPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/DirectorProfilePage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/HomePage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/LoginPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/OrderApprovalPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/OrderCompletionPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/OrdersPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/ProfilePage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/ProtectedRoute.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/RegisterEmployeePage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/CreatePlanPage.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/CreatePositionPage.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/DirectorProfilePage.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/Footer.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/Header.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/HomePage.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/LoginPage.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/NotificationPanel.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/OrderApprovalPage.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/OrderCompletionPage.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/OrdersPage.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/ProfilePage.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/RegisterEmployeePage.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/global.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/variables.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/auth/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/auth/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/ApplicationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/LogoutService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/LogoutService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/demo/AdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/demo/DemoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/demo/HrController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/vite.config.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/backend" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;CROOK27&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/CROOK27/zavod.git&quot;,
+    &quot;accountId&quot;: &quot;f5cd8951-fdac-4632-a33c-222eb5d2fd0f&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="31Gbb5EkyRbsgkU250iihJ6BMXQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.SchemaExportGenerator.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SecurityApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;I do mind&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Максим/Desktop/MDK11 — копия&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Максим\Desktop\MDK11 — копия" />
+      <recent name="C:\Users\Максим\Desktop\MDK11 — копия\front\dist" />
+      <recent name="C:\Users\Максим\Desktop\MDK11\src" />
+      <recent name="C:\Users\Максим\Desktop\MDK11\src\main\java" />
+      <recent name="C:\Users\Максим\Desktop\MDK11\front" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="Application" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="spring-boot-3-jwt-security-main" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="spring-boot-3-jwt-security-main" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SecurityApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.alibou.security.SecurityApplication" />
+      <module name="security" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.alibou.security.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="spring-boot-3-jwt-security-main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="spring-boot-3-jwt-security-main" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SecurityApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Максим\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0696ad74-66aa-48f3-8f16-1e37625b1e74" name="Changes" comment="" />
+      <created>1755153424191</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1755153424191</updated>
+    </task>
+    <task id="LOCAL-00001" summary="SecondCommit">
+      <option name="closed" value="true" />
+      <created>1758573267002</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758573267002</updated>
+    </task>
+    <task id="LOCAL-00002" summary="debag">
+      <option name="closed" value="true" />
+      <created>1760301897031</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1760301897031</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Database addition">
+      <option name="closed" value="true" />
+      <created>1761032742110</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1761032742110</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Database addition">
+      <option name="closed" value="true" />
+      <created>1761043141260</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1761043141260</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Database addition">
+      <option name="closed" value="true" />
+      <created>1761054874942</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1761054874942</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Database addition">
+      <option name="closed" value="true" />
+      <created>1761127117014</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1761127117015</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Database addition">
+      <option name="closed" value="true" />
+      <created>1761442453861</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1761442453861</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="FirsCommit" />
+    <MESSAGE value="SecondCommit" />
+    <MESSAGE value="debag" />
+    <MESSAGE value="Database addition" />
+    <option name="LAST_COMMIT_MESSAGE" value="Database addition" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.context.ApplicationContextException" package="org.springframework.context" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="user" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
