@@ -1,0 +1,305 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f3f3f3;
+}
+
+/* Центрирование */
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    max-width: 1300px;
+    width: 100%;
+}
+
+/* Левая колонка — карточка директора */
+.profileCard {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    width: 320px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    color: black;
+}
+
+.userPhoto {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.userName {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Правая часть — утверждённые заказы */
+.ordersSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.sectionTitle {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.ordersGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.orderCard {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.orderCard:hover {
+    transform: scale(1.02);
+}
+
+.orderImage {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.orderTitle {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.orderDesc {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Кнопки */
+.actions {
+    margin-top: 32px;
+    display: flex;
+    gap: 16px;
+}
+
+.actionButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+/* Желтая — создать заказ */
+.createOrderButton {
+    background-color: #ffd60a;
+    color: #000;
+}
+
+.createOrderButton:hover {
+    background-color: #ffcc00;
+}
+
+/* Синяя — зарегистрировать сотрудника */
+.registerButton {
+    background-color: #007bff;
+}
+
+.registerButton:hover {
+    background-color: #0069d9;
+}
+.directorSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ordersBlock {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.ordersList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.orderCard {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.orderCard:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.orderHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.orderTitle {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+    flex: 1;
+}
+
+.orderStatus {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.statusPending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.statusApproved {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.statusCompleted {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.statusFailed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.statusInProgress {
+    background-color: #cce7ff;
+    color: #004085;
+}
+
+.statusRejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.statusDefault {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+.orderDetails {
+    margin-bottom: 10px;
+}
+
+.orderDetails p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.orderActions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.smallButton {
+    padding: 6px 12px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.approveButton {
+    background-color: #28a745;
+    color: white;
+}
+
+.approveButton:hover {
+    background-color: #218838;
+}
+
+.rejectButton {
+    background-color: #dc3545;
+    color: white;
+}
+
+.rejectButton:hover {
+    background-color: #c82333;
+}
+
+.orderId {
+    font-size: 12px;
+    color: #999;
+    text-align: right;
+}
+
+.noOrders {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    border: 1px dashed #ddd;
+    border-radius: 8px;
+}
+
+.directorActions {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.actionButtons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.actionsTitle {
+    margin-bottom: 15px;
+    color: #333;
+}

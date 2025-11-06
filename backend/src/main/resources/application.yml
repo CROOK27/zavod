@@ -1,0 +1,58 @@
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  datasource:
+    password: 123456
+    url: jdbc:postgresql://db:5432/registration
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto=create:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+  mail:
+    host: localhost
+    port: 1025
+    username: hello
+    password: hello
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: "*"
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+management:
+  endpoints:
+    web:
+      exposure:
+        include=*:
+application:
+  security:
+    jwt:
+      secret-key: lmmWp4PdjdYEY7PWRFt67JAxb8EFF5jdCPkTenpa9DcBltSOJ6vYcUW4gyvV130MZ59Vt0hHvYVE4MJO8krk0pKi4XhH2b5AF9jtGnKvpkvRK0oTdPNmWiVcjMz5Lo1nVKuRj8QzjG9vmW5fO0XM9Tyzz2lpkCLjczfSRTTHSXkqAISShdk81LKdIW3Hho6nQUoeNJmdVIS7GnWoBZU2O6kORe8QHwunaXcxSJHuwn9V9YCpN0ilun8RUzleFOek
+      expiration: 86400000 # 24 часа
+      refresh-token:
+        expiration: 604800000 # 7 дней
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          cors=DEBUG:
+
+        security=DEBUG:
