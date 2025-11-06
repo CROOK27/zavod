@@ -5,73 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0696ad74-66aa-48f3-8f16-1e37625b1e74" name="Changes" comment="Database addition">
-      <change beforePath="$PROJECT_DIR$/backend/.dockerignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/eslint.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/App.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/api/AuthService.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/api/JWT.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/api/Store.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/api/api.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/api/auth.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/api/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/assets/react.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/components/Footer.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/components/Header.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/components/NotificationPanel.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/main.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/CreatePlanPage.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/CreatePositionPage.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/DirectorProfilePage.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/HomePage.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/LoginPage.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/OrderApprovalPage.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/OrderCompletionPage.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/OrdersPage.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/ProfilePage.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/ProtectedRoute.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/pages/RegisterEmployeePage.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/CreatePlanPage.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/CreatePositionPage.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/DirectorProfilePage.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/Footer.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/Header.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/HomePage.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/LoginPage.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/NotificationPanel.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/OrderApprovalPage.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/OrderCompletionPage.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/OrdersPage.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/ProfilePage.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/RegisterEmployeePage.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/global.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/front/styles/variables.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/auth/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/auth/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/ApplicationConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/JwtAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/JwtService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/LogoutService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/LogoutService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/config/WebConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/demo/AdminController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/demo/DemoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/demo/HrController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/Orders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alibou/security/orders/OrdersService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/vite.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +24,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/backend" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -133,7 +69,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHELLCHECK.PATH&quot;: &quot;I do mind&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Максим/Desktop/MDK11 — копия&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
